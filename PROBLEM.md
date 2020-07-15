@@ -35,7 +35,6 @@ By the end of the assignment you should be able to understand
 [Nodejs Assignment 2](/services/gitlab/stack_nodejs/assignment2_newsapimicroservices)
 
 ## Assignment:
-I
 1. The application should have following backend services
     1. NewsApp Source
     2. NewsApp Auth
