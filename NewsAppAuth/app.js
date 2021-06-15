@@ -1,18 +1,21 @@
 const Register=require("./auth.model")
 const express= require('express');
+const bodyparser=require('body-parser')
 const app= express();
 const router= express.Router();
+app.use(bodyparser.json())
+
 router.get("/", (req, res)=>{
     res.send("Welcome TO News App Authentication");
 })
 
-router.get('/login/:userid',async(req, res)=>{
+router.post('/login',async(req, res)=>{
    
-    console.log (req.params.userid)
-    //console.log (req.params.password)
-//    if (req.params.userid='admin' & req.params.password='password')
+    console.log (req.body.username)
+    console.log (req.body.password)
+//    if (req.params.username='admin' & req.params.password='password')
 //    {
-     res.send(req.params.userid);
+     res.send(req.params.password);
    //}
    
 })
