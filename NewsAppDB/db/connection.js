@@ -4,13 +4,13 @@ const mongoose = require('mongoose')
 
 // Creating Mongoo Connection
 function createMongoConnection(){
-    mongoose.connect('mongodb://localhost:27017/IBMWave14' , {
+    mongoose.connect('mongodb://localhost:27017/NewsDB' , {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true
 })
-
+ console.log(mongoose.Model);
     return mongoose.connection;
    
 }

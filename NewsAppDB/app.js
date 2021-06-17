@@ -6,12 +6,26 @@ const express= require('express');
 const app= express();
 const router= express.Router();
 app.use(bodyparser.json())
-router.get("/readnow", (req, res)=>{
-    res.send("Welcome TO readnow");
+
+router.get("/readnow", async(req, res)=>{ 
+  
+     try {     
+        const ReadNow = await readnow.find({})    
+         res.status(201).send(ReadNow)
+     } catch (e) {
+         res.status(400).send(e)
+     }
 })
 
-router.get('/readlater',(req, res)=>{
-    res.send("Welcome to readlaterpage");
+router.post('/readlater',async(req, res)=>{
+    const  ReadNow= new readnow(req.body)
+     console.log(ReadNow)
+     try {
+         await ReadNow.save()
+         res.status(201).send(ReadNow)
+     } catch (e) {
+         res.status(400).send(e)
+     }
 })
 
 router.post('/', (req, res)=>{

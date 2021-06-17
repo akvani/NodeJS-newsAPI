@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 function createMongoConnection(){
     //console.log(dbConfig.config.mongourl)
   //  mongoose.connect(dbConfig.mongourl);
-    mongoose.connect('mongodb://localhost:27017/IBMWave14'     , {
+    mongoose.connect('mongodb://localhost:27017/NewsDB'     , {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

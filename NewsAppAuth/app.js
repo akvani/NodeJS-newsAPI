@@ -6,17 +6,17 @@ const router= express.Router();
 app.use(bodyparser.json())
 
 router.get("/", (req, res)=>{
-    res.send("Welcome TO News App Authentication");
+    res.send("Welcome TO News App Authentication. Please use /register or /login");
 })
 
 router.post('/login',async(req, res)=>{
    
-    console.log (req.body.username)
-    console.log (req.body.password)
-//    if (req.params.username='admin' & req.params.password='password')
-//    {
-     res.send(req.params.password);
-   //}
+    if (req.query.username==='admin' && req.query.password==='password')
+   {
+     res.send("Successfully logged in as Admin");
+   }else{
+    res.send("Please check Username and password.");
+   }
    
 })
 // router.post('/register/',async(req, res)=>{
