@@ -1,0 +1,16 @@
+const app = require('../app');
+const db = require('../db/index.js');
+const config = require('../config');
+
+const _port = (config.WWW_PORT || 3000);
+
+
+const dbConnection = db.createMongoConnection();
+
+//Bind connection to error event (to get notification of connection errors)
+dbConnection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+dbConnection.once('open', () => {
+	app.listen(_port, ()=>{
+    console.log("News App Suthentication app Runs in port of ", _port);
+})
+})

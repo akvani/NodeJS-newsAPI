@@ -1,6 +1,9 @@
-let config={
-    WWW_PORT : (process.env.PORT || 8010),
-    mongoUrl: 'mongodb://localhost:27017/IBMWave14',
+module.exports = {
+  users: {
+    admin: {password: 'password', scopes: 'news:all news:read news:edit'.split(' ')},
+    stranger: {password: 'password', scopes: 'news:all news:read'.split(' ')}
+  },
+  jwtSecret: 'check',
+  port: process.env.PORT || 8010,
+  enableAuth: true
 }
-
-module.exports= config

@@ -11,15 +11,15 @@ export default function Dashboad() {
 
 useEffect(function()
 {
-axios.get('http://localhost:3001/api/v1/news',
+axios.get('http://localhost:8080/newsdb/readnow' ,
 {
   headers:{'Authorization':`Bearer ${localStorage.getItem("mytoken")}`}
 }
 ).then
 ( (result)=>
   {
-    console.log("Read Later Data");
-   console.log(result.data);
+    //console.log("Read Later Data");
+   //console.log(result.data);
    ReadLaterCallback(result.data);
   } 
 )
@@ -30,7 +30,7 @@ axios.get('http://localhost:3001/api/v1/news',
 
 const removelist = (myid)=>
 {
-axios.delete(`http://localhost:3001/api/v1/news/${myid}`,
+axios.delete(`http://localhost:8080/newsdb/${myid}`,
 {
     headers : {
     'Content-type':'application/json',
@@ -48,6 +48,19 @@ axios.delete(`http://localhost:3001/api/v1/news/${myid}`,
   )
 .catch( (err)=>console.log(err))
   
+axios.get('http://localhost:8080/newsdb/readnow' ,
+{
+  headers:{'Authorization':`Bearer ${localStorage.getItem("mytoken")}`}
+}
+).then
+( (result)=>
+  {
+    //console.log("Read Later Data");
+   //console.log(result.data);
+   ReadLaterCallback(result.data);
+  } 
+)
+.catch((err)=>console.log(err))
 
 }
 

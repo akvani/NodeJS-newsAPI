@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+
 export default function Login() {
 
     const history=useHistory();
@@ -9,7 +11,8 @@ const[password,setPassword]=useState('');
 
 const loginUser= (e) =>{
     e.preventDefault();
-axios.post('http://localhost:3001/auth/v1',
+    
+axios.post('http://localhost:8080/auth/v1',
 {username,password},
 {
     headers: {
@@ -19,13 +22,12 @@ axios.post('http://localhost:3001/auth/v1',
 ).then ( 
     (res)=>
     {
-       
+      console.log(password); 
        localStorage.setItem('mytoken',res.data?.token);
         localStorage.setItem('isAuthenticated',"true");
         localStorage.setItem('username',username);
         history.push('dashboard')
-    } )
-.catch( err=> console.log(err))
+    } ).catch( err=> console.log(err))
 
 
 
@@ -49,7 +51,9 @@ loginUser(e);
 }>
 
 
-<div className="form-group">
+{/* <div className="form-group"> */}
+<Container style={{ padding: '100px' }}> 
+    {/* <div className="container" >     */}
   
     <label htmlFor="username">Enter Name</label>
     <input type="text" className="form-control" id="username" 
@@ -57,11 +61,11 @@ loginUser(e);
     onChange={
 (evt)=>setUsername(evt.target.value)
     }/>
-  </div>
+  {/* </div> */}
 
       
   
-  <div className="form-group">
+  {/* <div className="form-group"> */}
     <label htmlFor="password">Enter Password</label>
     <input type="password" className="form-control" id="password"
      
@@ -69,10 +73,12 @@ loginUser(e);
         (evt)=>setPassword(evt.target.value)
             }/>
     
-  </div>
+  {/* </div> */}
   
   <button type="submit" className="btn btn-primary">Login</button>
- 
+  {/* </div> */}
+  {/* </div> */}
+  </Container>
 </form>  
 
         </div>

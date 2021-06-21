@@ -1,10 +1,12 @@
 import React from 'react'
 
 export default function Newsfeed(props) {
+  console.log('props to print' + props.title);
     
     const remove=(e)=>
     {
-  console.log(e);    
+      //console.log('remove item')
+  //console.log(e);    
      props.removeevent(e);      
     }
     return (     
@@ -18,7 +20,7 @@ export default function Newsfeed(props) {
    <img className="card-text" src={props.urltoImage} className="img-rounded" alt="News icon" width="304" height="236"></img>
 
    <span className="float-right" style={{"cursor":"pointer"}} 
-    onClick= {()=>remove(props.id)}>
+    onClick= {()=>remove(props.title)}>
     <i style={{color:"green"}}> Remove from Read Later list</i>
     </span>
     </h6>

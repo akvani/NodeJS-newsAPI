@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
+//const uuid4 = require('uuid4')
+
 
 const readnowSchema = new schema({
-    author: { type: String, required: true },
-    title: { type: String, required: true },
+  //  key:uuid4,
+    author: { type: String  },
+    title: { type: String  },
     description: { type: String, required: true },
-    url: { type: String, required: false },
-    urlToImage: { type: String, required: true }
+    url: { type: String },
+    urlToImage: { type: String }
     
 
 })

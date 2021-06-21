@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react'
 //import PropTypes from "prop-types";
 
 export default function Card(props) {
-    const[name,setname]=useState('');
+    const[author,setname]=useState('');
+    const[key,setkey]=useState('');
     const[title,settitle]=useState('');
     const[url,seturl]=useState('');
     const[urlToImage,seturltoImage]=useState('');
     const[description,seturdescription]=useState('');
 
     useEffect(() => {
-        setname(props.name);
+      setkey(props.key);
+        setname(props.author);
         settitle(props.title);
         seturl(props.url);
         seturltoImage(props.urltoImage)
@@ -18,17 +20,18 @@ export default function Card(props) {
 
     const readLater=()=>
     {
-      
+       
       const Newsdetails={
-             name,
+             key,
+             author,
              title,
              url,
              urlToImage,
              description
 
       }
-    
-     props.readLaterevent(Newsdetails);
+    console.log(JSON.stringify(Newsdetails));
+     props.readLaterevent(JSON.stringify(Newsdetails));
       
     }
     return (
@@ -43,7 +46,8 @@ export default function Card(props) {
     onClick= {()=>readLater()}>
     <i style={{color:"green"}}> Read Later</i>
     </span>
-     <p className="card-title"><a href={props.url}>{props.title}</a></p>
+    <p className="card-title"><a href={props.url}>{props.title}</a></p>
+     <p className="card-text">key: {props.key}</p>
      <p className="card-text">{props.description}</p>
      <p className="card-text"><b>Author:</b> {props.author ? props.author : 'NA'}</p>
      <img className="card-text" src={props.urltoImage} className="img-rounded" alt="News icon" width="304" height="236"></img>

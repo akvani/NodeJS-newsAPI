@@ -2,6 +2,15 @@ const newscontroller=require('./news.controller')
 const router = require('express').Router();
 const axios = require("axios");
 
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", " Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
+        return res.status(200).json({});
+        }
+    next();
+    });
 
 router.get('/', (req, res) => {
     
@@ -23,12 +32,14 @@ router.get("/category", async(req, res,news) => {
 })        
 
 router.get("/category/:category", async(req, res,next) => {
-    console.log("searching news by category");
-
+   // console.log("searching news by category");
+//console.log(req.params.category);
 const category = req.params.category;
-console.log(category +" from router")
+//console.log(category +" from router")
 await newscontroller.newsbycategory(category).then((response)=>{
-    res.json({ message: response.data})
+    //console.log(response.data)
+    //return res.json({ message: response.data})
+    res.status(201).send(response.data)    
 })
 .catch(console.error) 
 
