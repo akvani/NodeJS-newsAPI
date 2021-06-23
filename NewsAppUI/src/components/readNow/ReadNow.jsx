@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Newsfeed(props) {
-  console.log('props to print' + props.title);
+  //console.log('props to print' + props.title);
     
     const remove=(e)=>
     {

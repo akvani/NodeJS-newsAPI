@@ -37,7 +37,7 @@ export default function Header() {
         <li className="nav-item">
         <Link to="/dashboard" style={{ color: '#FFF' }}>    Dashboard    </Link>
         </li>
-        <li > <Link to="/ReadNow" style={{ color: '#FFF' }}>    readnow    </Link></li>
+        <li > <Link to="/ReadNow" style={{ color: '#FFF' }}>    Readnow    </Link></li>
         </ul>
       
 <ul className="navbar-nav ml-auto mb-2 mb-lg-4 mt-xl-4">

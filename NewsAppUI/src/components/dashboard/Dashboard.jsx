@@ -1,6 +1,7 @@
 import React, {useState,useEffect}  from 'react'
 import axios from 'axios';
 import Card from '../card/Card'
+import uuid from 'uuidv4'
 
 export default function Dashboad() {
 
@@ -75,7 +76,7 @@ const getcategory=(category)=>{
   axios.get(`http://localhost:8080/source/api/news/category/${category}`).then
   ( (result)=>
     {
-     console.log(result.data.articles);
+    // console.log(result.data.articles);
      myCallback(result.data.articles);
     } 
   )
@@ -130,7 +131,8 @@ const getcategory=(category)=>{
       
                  <h1>{newsdata.map (
                   (news)=> 
-                  <Card key={news.title} id={news.id} name={news.name} 
+                  
+                  <Card  key={uuid} id={news.id} name={news.name} 
                   title={news.title} 
                   url={news.url}
                   description={news.description}

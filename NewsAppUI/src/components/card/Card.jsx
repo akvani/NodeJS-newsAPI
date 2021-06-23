@@ -22,7 +22,6 @@ export default function Card(props) {
     {
        
       const Newsdetails={
-             key,
              author,
              title,
              url,
