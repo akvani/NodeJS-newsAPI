@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap'
+
+
 
 export default function Login() {
-
     const history=useHistory();
 const[username,setUsername]=useState('');
 const[password,setPassword]=useState('');
+    
+   
 
 const loginUser= (e) =>{
     e.preventDefault();
-    
-axios.post('http://localhost:8080/auth/v1',
-{username,password},
+    console.log(username+password)
+    const querydata={query:`query{login(email:"${username}", password:"${password}"){token}}`};
+
+  let body=JSON.stringify(querydata);
+    console.log(body); 
+axios.post('http://localhost:8080/auth/v1',body,
 {
     headers: {
         'Content-Type':'application/json'
@@ -22,6 +28,7 @@ axios.post('http://localhost:8080/auth/v1',
 ).then ( 
     (res)=>
     {
+        console.log(res.data.token);
       console.log(password); 
        localStorage.setItem('mytoken',res.data?.token);
         localStorage.setItem('isAuthenticated',"true");
@@ -52,8 +59,10 @@ loginUser(e);
 
 
 {/* <div className="form-group"> */}
-<Container style={{ padding: '100px' }}> 
+<Container style={{ padding: '20px' }}> 
     {/* <div className="container" >     */}
+    <Row className="justify-content-md-center">
+    <Col md={'4'} className="bg-light" style={{ padding: '20px' }} >
   
     <label htmlFor="username">Enter Name</label>
     <input type="text" className="form-control" id="username" 
@@ -78,6 +87,8 @@ loginUser(e);
   <button type="submit" className="btn btn-primary">Login</button>
   {/* </div> */}
   {/* </div> */}
+  </Col>
+  </Row>
   </Container>
 </form>  
 

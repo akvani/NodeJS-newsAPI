@@ -1,7 +1,8 @@
 import React, {useState,useEffect}  from 'react'
 import axios from 'axios';
-import Card from '../card/Card'
+import Card1 from '../card/Card'
 import uuid from 'uuidv4'
+import { Container, Row, Col } from 'react-bootstrap'
 
 export default function Dashboad() {
 
@@ -87,65 +88,59 @@ const getcategory=(category)=>{
 
     return (
     
-      <div className="container">
-        <div className="row" style={{ width: '100%' }}>         
-        
-         <h3>Select Category      :</h3>         
+      <div>              
+        <Container>
+             <Row>
+                <Col >            
+                   <h3> Select Category to display news</h3>       
       
-<div onClick={() => {
-            getcategory("business");
-            
-          }} >
-
+<div className="form-check form-check-inline" onClick={() => {getcategory("business"); }} >
 <input type="radio" value={"sports"} name="category" checked={category == "business"}/> Business
 </div>
-<div onClick={() => {
-            getcategory("sports");
-            
-          }} >
+
+<div  className="form-check form-check-inline" onClick={() => { getcategory("sports"); }} >
 <input type="radio" value={"sports"} name="category" checked={category == "sports"}/> Sports
 </div>
-<div onClick={() => {
-            getcategory("entertainment");
-            
-          }} >
+
+<div className="form-check form-check-inline" onClick={() => { getcategory("entertainment"); }} >
 <input type="radio" value={"entertainment"} name="category" checked={category == "entertainment"} /> Entertainment
 </div>
-<div onClick={() => {
-            getcategory("science");
-            
-          }} >
+
+<div className="form-check form-check-inline" onClick={() => { getcategory("science"); }} >
 <input type="radio" value={"science"} name="category" checked={category == "science"}/> Science
 </div>
-<div onClick={() => {
-            getcategory("technology");
-            
-          }} >
-<input type="radio" value={"technology"} name="category" checked={category == "technology"} /> Technology
 
-         </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12 my-12">  
-              {
+<div className="form-check form-check-inline" onClick={() => { getcategory("technology"); }} >
+<input type="radio" value={"technology"} name="category" checked={category == "technology"} /> Technology
+</div>
+<h1 className='h1'>{ category} Headline</h1>
+        </Col>
+      </Row>
+  </Container>        
+        
+        {/* <Container fluid >
+        <Row> */}
+          {/* <div className="col-md-12 my-12">  
+              { */}
       
-                 <h1>{newsdata.map (
-                  (news)=> 
+                 {newsdata.map (
+                  (news)=> <Col md={3} sm={6} xs={12}>
                   
-                  <Card  key={uuid} id={news.id} name={news.name} 
+                  <Card1  key={uuid} id={news.id} name={news.name} 
                   title={news.title} 
                   url={news.url}
                   description={news.description}
                   urltoImage={news.urlToImage}
                   readLaterevent={readLater}
-                  />
-                   )}</h1>
+                  />  </Col>
+                   ) }
 
-                }         
-          </div>        
-         
+                {/* }         
+          </div>   */}
+          {/* </Row>      
+          </Container> */}
         </div>
-        </div>
+       
      
     )
 }

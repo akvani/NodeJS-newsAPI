@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
 
 app.use(require('body-parser').json());
 
-app.use('/v1', require('./auth'));
+app.use('/v1', require('./auth/users'));
 
 if(enableAuth) {
   const authorize = require('./auth/authorize');
