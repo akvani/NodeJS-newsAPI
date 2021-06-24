@@ -46,7 +46,7 @@ axios.get('http://localhost:8080/newsdb/readnow',
 
 const readLater= (mydata)=>
 {
-  //console.log("Inside parent");
+  console.log("Inside parent");
   console.log(mydata);
  
   axios.post('http://localhost:8080/newsdb/readlater',mydata,
@@ -95,23 +95,23 @@ const getcategory=(category)=>{
                    <h3> Select Category to display news</h3>       
       
 <div className="form-check form-check-inline" onClick={() => {getcategory("business"); }} >
-<input type="radio" value={"sports"} name="category" checked={category == "business"}/> Business
+<input type="radio" value={"sports"} name="category" checked={category === "business"}/> Business
 </div>
 
 <div  className="form-check form-check-inline" onClick={() => { getcategory("sports"); }} >
-<input type="radio" value={"sports"} name="category" checked={category == "sports"}/> Sports
+<input type="radio" value={"sports"} name="category" checked={category === "sports"}/> Sports
 </div>
 
 <div className="form-check form-check-inline" onClick={() => { getcategory("entertainment"); }} >
-<input type="radio" value={"entertainment"} name="category" checked={category == "entertainment"} /> Entertainment
+<input type="radio" value={"entertainment"} name="category" checked={category === "entertainment"} /> Entertainment
 </div>
 
 <div className="form-check form-check-inline" onClick={() => { getcategory("science"); }} >
-<input type="radio" value={"science"} name="category" checked={category == "science"}/> Science
+<input type="radio" value={"science"} name="category" checked={category === "science"}/> Science
 </div>
 
 <div className="form-check form-check-inline" onClick={() => { getcategory("technology"); }} >
-<input type="radio" value={"technology"} name="category" checked={category == "technology"} /> Technology
+<input type="radio" value={"technology"} name="category" checked={category === "technology"} /> Technology
 </div>
 <h1 className='h1'>{ category} Headline</h1>
         </Col>

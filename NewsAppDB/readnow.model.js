@@ -7,9 +7,10 @@ const readnowSchema = new schema({
    key:{type: String },
     author: { type: String  },
     title: { type: String  },
+    urlToImage: { type: String },
     description: { type: String, required: true },
-    url: { type: String },
-    urlToImage: { type: String }
+    url: { type: String }
+   
     
 
 })

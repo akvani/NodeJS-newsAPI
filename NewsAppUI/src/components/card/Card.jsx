@@ -21,7 +21,7 @@ export default function Card(props) {
 
     const readLater=(news)=>
     {
-   
+   console.log(news);
      props.readLaterevent(JSON.stringify(news));
       
     }

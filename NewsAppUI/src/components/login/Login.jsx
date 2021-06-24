@@ -28,12 +28,20 @@ axios.post('http://localhost:8080/auth/v1',body,
 ).then ( 
     (res)=>
     {
-        console.log(res.data.token);
-      console.log(password); 
-       localStorage.setItem('mytoken',res.data?.token);
-        localStorage.setItem('isAuthenticated',"true");
-        localStorage.setItem('username',username);
-        history.push('dashboard')
+        //console.log(res.data)
+        //console.log(res.data.data.login.token);
+        if (res.data.data.login.token==="")
+        {
+            console.log("Please check userId and password"); 
+        }
+       else{
+        //console.log(password); 
+        localStorage.setItem('mytoken',res.data?.token);
+         localStorage.setItem('isAuthenticated',"true");
+         localStorage.setItem('username',username);
+         history.push('dashboard')
+       }
+      
     } ).catch( err=> console.log(err))
 
 

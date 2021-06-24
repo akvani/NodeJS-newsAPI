@@ -37,9 +37,10 @@ router.delete("/:id", async(req, res)=>{
 })
 
 router.post('/readlater',async(req, res)=>{
-   // console.log("req.body")
+console.log("Inside Read later api")
+   console.log(req.body)
     const  ReadLater= new readnow(req.body)
-    // console.log(ReadLater)
+     console.log(ReadLater)
      try {
          await ReadLater.save()
          res.status(201).send(ReadLater)
